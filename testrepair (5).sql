@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2025 at 11:42 AM
+-- Generation Time: Oct 20, 2025 at 12:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -207,11 +207,12 @@ CREATE TABLE `notirepair` (
   `branch` text DEFAULT NULL,
   `JobId` text DEFAULT NULL,
   `dateJobReturnToBranch` datetime DEFAULT NULL,
-  `JobClosed` text NOT NULL DEFAULT 'ยังไม่ปิดงาน',
+  `StatusJobClosed` text NOT NULL DEFAULT '\'ยังไม่ปิดงาน\'',
   `dateReceiveFromBranch` datetime DEFAULT NULL,
   `ReciveStateFromBranch` text NOT NULL DEFAULT 'ยังไม่ได้รับของ',
   `dateSenttoSubplier` datetime DEFAULT NULL,
   `SupplierState` text NOT NULL DEFAULT 'ยังไม่เเจ้ง',
+  `dateReceiveFromSubplier` datetime DEFAULT NULL,
   `TechnicailState` text NOT NULL DEFAULT 'ยังไม่ซ่อม'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -219,11 +220,11 @@ CREATE TABLE `notirepair` (
 -- Dumping data for table `notirepair`
 --
 
-INSERT INTO `notirepair` (`NotirepairId`, `equipmentId`, `userId`, `DateNotirepair`, `DeatailNotirepair`, `zone`, `branch`, `JobId`, `dateJobReturnToBranch`, `JobClosed`, `dateReceiveFromBranch`, `ReciveStateFromBranch`, `dateSenttoSubplier`, `SupplierState`, `TechnicailState`) VALUES
-(230, 110, 0, '2025-10-07 10:32:58', 'd', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', 'ยังไม่ซ่อม'),
-(231, 110, 0, '2025-10-08 05:38:39', 'c', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', 'ยังไม่ซ่อม'),
-(232, 110, 0, '2025-10-08 05:40:53', 'con', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', 'ยังไม่ซ่อม'),
-(233, 110, 0, '2025-10-08 05:44:16', 'dddd', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', 'ยังไม่ซ่อม');
+INSERT INTO `notirepair` (`NotirepairId`, `equipmentId`, `userId`, `DateNotirepair`, `DeatailNotirepair`, `zone`, `branch`, `JobId`, `dateJobReturnToBranch`, `StatusJobClosed`, `dateReceiveFromBranch`, `ReciveStateFromBranch`, `dateSenttoSubplier`, `SupplierState`, `dateReceiveFromSubplier`, `TechnicailState`) VALUES
+(230, 110, 0, '2025-10-07 10:32:58', 'd', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', NULL, 'ยังไม่ซ่อม'),
+(231, 110, 0, '2025-10-08 05:38:39', 'c', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', NULL, 'ยังไม่ซ่อม'),
+(232, 110, 0, '2025-10-08 05:40:53', 'con', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', NULL, 'ยังไม่ซ่อม'),
+(233, 110, 0, '2025-10-08 05:44:16', 'dddd', 'chavanlak.p@ku.th', 'repaircentertgi@gmail.com', NULL, NULL, 'ยังไม่ปิดงาน', NULL, 'ยังไม่ได้รับของ', NULL, 'ยังไม่เเจ้ง', NULL, 'ยังไม่ซ่อม');
 
 -- --------------------------------------------------------
 
