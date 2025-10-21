@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class NotiRepair extends Model
 {
+    protected $table = 'notirepair';
+    protected $primaryKey = 'NotirepairId';
+    public $timestamps = false;
     use HasFactory;
 }

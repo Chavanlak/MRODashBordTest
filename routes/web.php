@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotiRepairContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,17 @@ Route::get('/store', function () {
 Route::get('/store2', function () {
     return view('dashborad.store2');
 });
-Route::get('/admin', function () {
+Route::get('/admin', action: function () {
     return view('dashborad.admintecnicial');
 });
+Route::get('/test',function(){
+    return view('dashborad.disablebutton');
+});
+// Route::get('/testdate',[NotiRepairContoller::class,'Submit']);
+// Route::get('/api/job-status/{NotirepairId}', [NotiRepairContoller::class, 'getJobStatus']);
+// Route::post('/submit', [NotiRepairContoller::class, 'Submit']); 
+
+Route::post('/submit-repair', [NotiRepairContoller::class, 'submitRepair']);
+
+// Route เดิมสำหรับแสดงหน้า admintechtest
+Route::get('/admintechtest', [NotiRepairContoller::class, 'adminTechTest']);

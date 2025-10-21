@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Technician Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <style>
-    body { background-color: #f8f9fa; font-family: "Prompt", sans-serif; }
+    body { background-color: #f8f9fa; }
     .navbar { z-index: 1030; }
 
     /* Content */
@@ -34,8 +33,6 @@
       display: block;
       padding: 12px 20px;
       text-decoration: none;
-      border-radius: 6px;
-      transition: 0.2s;
     }
 
     .sidebar a:hover, .sidebar a.active {
@@ -46,7 +43,7 @@
     /* Mobile adjustments */
     @media (max-width: 768px) {
       .sidebar { display: none; }
-      .content { padding-left: 0; padding-top: 70px; }
+      .content { padding-left: 0; }
     }
 
     /* Status box */
@@ -55,7 +52,6 @@
       background: white;
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      height: 100%;
     }
 
     .status-btn {
@@ -101,6 +97,7 @@
       background-color: #007bff;
       color: #fff;
     }
+
   </style>
 </head>
 <body>
@@ -139,7 +136,7 @@
   <!-- 🔹 Offcanvas Mobile Sidebar -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title text-white">Menu</h5>
+      <h5 class="offcanvas-title">Menu</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body">
@@ -153,13 +150,13 @@
 
   <!-- 🔹 Content -->
   <div class="content container-fluid">
-    <h4 class="mb-4 fw-bold">Technician Job Status</h4>
+    <h4 class="mb-4">Technician Job Status</h4>
 
     <div class="row g-3">
       <div class="col-md-4">
         <div class="status-box status-complete">
           <h5>📦 รับของจากสาขา</h5>
-          <button class="btn btn-primary status-btn mt-2" onclick="updateReceiveDate()" id="receiveBtn">กดรับ</button>
+          <button class="btn btn-primary status-btn mt-2" onclick="updateDate('receiveDate') myFunction()" id="myBtn">กดรับ</button>
           <p class="mt-2 date-label" id="receiveDate">ยังไม่ได้อัปเดต</p>
         </div>
       </div>
@@ -167,7 +164,7 @@
       <div class="col-md-4">
         <div class="status-box status-pending">
           <h5>🚚 ส่งของให้ Supplier</h5>
-          <button class="btn btn-warning status-btn mt-2" onclick="updateDate('sentDate')">ส่ง Sub</button>
+          <button class="btn btn-warning status-btn mt-2" onclick="updateDate('sentDate')">ส่งSub</button>
           <p class="mt-2 date-label" id="sentDate">ยังไม่ได้อัปเดต</p>
         </div>
       </div>
@@ -182,13 +179,12 @@
     </div>
 
     <div class="mt-4 text-end">
-      <button class="btn btn-primary px-4" onclick="saveJobData()">💾 บันทึกข้อมูล</button>
+      <button class="btn btn-primary px-4">บันทึกข้อมูล</button>
     </div>
   </div>
 
   <script>
-    // ฟังก์ชันอัปเดตเวลา
-    function updateDate(id) {
+   function  updateDate(id) {
       const now = new Date();
       const formatted = now.toLocaleString('th-TH', {
         year: 'numeric',
@@ -199,37 +195,7 @@
       });
       document.getElementById(id).textContent = "อัปเดตเมื่อ: " + formatted;
     }
-
-    // ฟังก์ชันเฉพาะของปุ่ม "รับของ"
-    function updateReceiveDate() {
-      updateDate('receiveDate');
-      document.getElementById("receiveBtn").disabled = true;
-    }
-
-    // ฟังก์ชันบันทึกข้อมูล (ตัวอย่างใช้ Fetch API ส่งไป Laravel)
-    function saveJobData() {
-      const data = {
-        receiveDate: document.getElementById('receiveDate').textContent,
-        sentDate: document.getElementById('sentDate').textContent,
-        completeDate: document.getElementById('completeDate').textContent,
-      };
-
-      fetch('/api/save-job-status', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': '{{ csrf_token() }}' // ใช้กับ Laravel
-        },
-        body: JSON.stringify(data)
-      })
-      .then(res => res.json())
-      .then(response => {
-        alert("✅ บันทึกข้อมูลเรียบร้อยแล้ว!");
-      })
-      .catch(err => {
-        alert("❌ เกิดข้อผิดพลาดในการบันทึกข้อมูล");
-      });
-    }
+   
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
