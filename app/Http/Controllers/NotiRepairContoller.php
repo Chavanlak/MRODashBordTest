@@ -181,16 +181,16 @@ public static function adminTechTest(){
     return view('dashborad.admintechtest', compact('notirepairs'));
 }
 public static function submitRepair(Request $request){
-    // 1. ดึง ID จาก Form
+    // ดึง ID จาก Form
     $NotirepairId = $request->NotirepairId;
 
-    // 2. กำหนดสถานะใหม่ (Hardcode ให้เปลี่ยนเป็น "ได้รับของแล้ว")
+    // กำหนดสถานะใหม่ 
     $ReciveStateFromBranch = 'ได้รับของแล้ว';
     
-    // 3. กำหนดวันที่ได้รับของเป็นเวลาปัจจุบัน
+    // กำหนดวันที่ได้รับของเป็นเวลาปัจจุบัน
     $dateReceiveFromBranch = now()->toDateTimeString();
     
-    // 4. เรียก Repository เพื่ออัปเดตข้อมูล
+    // เรียก Repository เพื่ออัปเดตข้อมูล
     $isUpdated = NotiRepairRepository::saveNotiRepair(
         $NotirepairId,
         $dateReceiveFromBranch,
@@ -199,9 +199,9 @@ public static function submitRepair(Request $request){
 
     // 5. Redirect พร้อมข้อความแจ้งเตือน
     if($isUpdated){
-        return redirect('/admintechtest')->with('success', "รายการ ID $NotirepairId ได้รับการอัปเดตแล้ว ✅");
+        return redirect('/admintechtest')->with('success', "รายการ ID $NotirepairId ได้รับการอัปเดตแล้ว ");
     }
 
-    return redirect('/admintechtest')->with('error', "เกิดข้อผิดพลาดในการอัปเดตรายการ ID $NotirepairId ❌");
+    return redirect('/admintechtest')->with('error', "เกิดข้อผิดพลาดในการอัปเดตรายการ ID $NotirepairId ");
 }
 }
