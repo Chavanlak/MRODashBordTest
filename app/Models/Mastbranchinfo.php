@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Statustracking extends Model
+class Mastbranchinfo extends Model
 {
-    protected $table = 'statustracking';
-
-    protected $primaryKey = 'statustrackingId';
+    protected $table = 'mastbranchinfo';
+    protected $primaryKey = 'MBranchInfo_Code';
     public $timestamps = false;
-    
-
     use HasFactory;
 }

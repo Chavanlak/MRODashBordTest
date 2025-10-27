@@ -12,3 +12,17 @@
 
 # case special
 # ถ้าของซ่อมไม่ได้ หรือ sup ซ่อมนาน ให้ทำการซื้อใหม่ น่าจะอยู่ใน module ที่ 3
+
+# SELECTt1.NotirepairId,t1.BranchCode AS รหัสสาขา,t2.MBranchInfo_Name AS ชื่อสาขาFROMtestrepair.notirepair AS t1INNER JOINfujipos.mastbranchinfo AS t2 ON t1.BranchCode = t2.MBranchInfo_Code;
+    
+# SELECT t1.NotirepairId,t1.BranchCode AS รหัสสาขา,t2.MBranchInfo_Name AS ชื่อสาขาFROM testrepair.notirepair AS t1LEFT JOIN  fujipos.mastbranchinfo AS t2ON t1.BranchCode = t2.MBranchInfo_Code;
+    
+# SELECTt1.NotirepairId,t1.BranchCode AS รหัสสาขา,t2.MBranchInfo_Name AS ชื่อสาขาFROMtestrepair.notirepair AS t1LEFT JOIN fujipos.mastbranchinfo AS t2ONt1.BranchCode = t2.MBranchInfo_CodeWHEREt2.Branch_active = 1;
+
+# relation 
+# UPDATE notirepair
+# SET MBranchInfo_Code = 'C01'
+# WHERE MBranchInfo_Code NOT IN (
+  #  SELECT MBranchInfo_Code 
+   # FROM mastbranchinfo
+# );

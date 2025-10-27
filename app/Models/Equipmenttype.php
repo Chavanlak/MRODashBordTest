@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Statustracking extends Model
+class Equipmenttype extends Model
 {
-    protected $table = 'statustracking';
+    protected $table = 'equipmenttype';
 
-    protected $primaryKey = 'statustrackingId';
+    protected $primaryKey = 'equipmenttypeId';
     public $timestamps = false;
-    
-
     use HasFactory;
 }
