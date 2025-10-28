@@ -68,10 +68,12 @@
       font-size: 0.9rem;
       color: #6c757d;
     }
-
+    /* .status-btn { border-left: 5px solid #0684d8; } */
+    .status-fail { border-left: 5px solid #0684d8; }
     .status-complete { border-left: 5px solid #28a745; }
     .status-pending { border-left: 5px solid #ffc107; }
-    .status-fail { border-left: 5px solid #dc3545; }
+    /* .status-fail { border-left: 5px solid #dc3545; } */
+    
 
     /* Offcanvas Mobile Sidebar */
     .offcanvas-start {
@@ -157,7 +159,7 @@
 
     <div class="row g-3">
       <div class="col-md-4">
-        <div class="status-box status-complete">
+        <div class="status-box status-fail">
           <h5>📦 รับของจากสาขา</h5>
           <button class="btn btn-primary status-btn mt-2" onclick="updateReceiveDate()" id="receiveBtn">กดรับ</button>
           <p class="mt-2 date-label" id="receiveDate">ยังไม่ได้อัปเดต</p>
@@ -173,7 +175,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="status-box status-fail">
+        <div class="status-box status-complete">
           <h5>🔧 Supplier ซ่อมเสร็จ</h5>
           <button class="btn btn-success status-btn mt-2" onclick="updateDate('completeDate')">เรียบร้อย</button>
           <p class="mt-2 date-label" id="completeDate">ยังไม่ได้อัปเดต</p>

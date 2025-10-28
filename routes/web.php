@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NotiRepairContoller;
+use App\Http\Controllers\StatustrackingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,3 +41,12 @@ Route::post('/submit-repair', [NotiRepairContoller::class, 'submitRepair']);
 
 // Route เดิมสำหรับแสดงหน้า admintechtest
 Route::get('/admintechtest', [NotiRepairContoller::class, 'adminTechTest']);
+Route::get('/statustest',[StatustrackingController::class,'showall']);
+
+Route::get('/showall',[StatustrackingController::class,'getStatus']);
+Route::post('/adminstate', [StatustrackingController::class, 'createNewItem']);
+
+//admintest
+// routes/web.php
+Route::get('/admintest/{item}', [StatustrackingController::class, 'checkItemStatus'])
+     ->name('admin.check.status');

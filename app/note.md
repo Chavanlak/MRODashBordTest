@@ -26,3 +26,5 @@
   #  SELECT MBranchInfo_Code 
    # FROM mastbranchinfo
 # );
+
+# TrackingStatus::class คือ ค่าคงที่มายากล (Magic Constant) ของ PHP ที่ใช้ในการ อ้างถึงชื่อคลาสแบบเต็ม (Fully Qualified Class Name - FQCN) ในรูปแบบของสตริง
