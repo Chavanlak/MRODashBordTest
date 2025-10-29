@@ -43,10 +43,23 @@ Route::post('/submit-repair', [NotiRepairContoller::class, 'submitRepair']);
 Route::get('/admintechtest', [NotiRepairContoller::class, 'adminTechTest']);
 Route::get('/statustest',[StatustrackingController::class,'showall']);
 
-Route::get('/showall',[StatustrackingController::class,'getStatus']);
+Route::get('/showall',[StatustrackingController::class,'showall']);
+
+Route::get('/showstatus',[StatustrackingController::class,'getStatus']);
 Route::post('/adminstate', [StatustrackingController::class, 'createNewItem']);
 
 //admintest
 // routes/web.php
 Route::get('/admintest/{item}', [StatustrackingController::class, 'checkItemStatus'])
      ->name('admin.check.status');
+
+Route::get('/status',[StatustrackingController::class,'index']);
+// Route::post('/status/change/{statustrackingId}', [StatustrackingController::class, 'changeStatusItem'])->name('status.change');
+// สำหรับกดรับของ
+Route::post('/status/change/item/{statustrackingId}', [StatustrackingController::class, 'changeStatusItem'])->name('status.change');
+
+// สำหรับส่งไป Supplier
+Route::post('/status/change/supplier/{statustrackingId}', [StatustrackingController::class, 'changeStatusSupplier'])->name('status.changeSupplier');
+
+// สำหรับซ่อมเสร็จ
+Route::post('/status/change/technicial/{statustrackingId}', [StatustrackingController::class, 'changeStatusSupplier'])->name('status.changeRepair');

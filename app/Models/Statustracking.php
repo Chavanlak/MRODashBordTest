@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Repository\TrackingStatus; 
 //มองหาคลาส enum ที่เก็บสถานะในโฟลเดอร์ Repository
 // use App\Enums\TrackingStatus;
-// use Illuminate\Database\Eloquent\Casts\AsStringable;
+// use Illuminate\Database\Eloquent\Casts\TrackingStatus;
+use Illuminate\Database\Eloquent\Casts\AsStringable;
 class Statustracking extends Model
 {
     protected $table = 'statustracking';
@@ -16,8 +17,12 @@ class Statustracking extends Model
     public $timestamps = false;
     
     protected $casts =[
-        // 'status' => 'string',
-        'status' => TrackingStatus::class,
+        'status' => 'string',
+         // 'status' => statustracking::class,
+        // 'status' => AsStringable::class,
+        
+       
+
     ];
 
     use HasFactory;
