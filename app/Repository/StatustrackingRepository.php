@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 
-// use App\Enums\TrackingStatus;
+use App\Enums\TrackingStatus;
 // enum AsStringable: string
 enum TrackingStatusEnum: string
 {
@@ -24,9 +24,31 @@ class StatustrackingRepository
 {
 
 
-    public static function getstatustrackingById()
+    // public static function getstatustrackingById()
+    // {
+    //     return Statustracking::where('statustrackingId')->get();
+    // }
+    public static function getStatustrackingById($statustrackingId) // เพิ่ม parameter
+{
+    // ใช้ where() เพื่อกรองตาม ID แล้วใช้ first() เพื่อให้ได้ Model Object เดียว
+    return Statustracking::where('statustrackingId', $statustrackingId)->first();
+}
+   
+    public static function getNotirepirById()
     {
-        return Statustracking::where('statustrackingId')->get();
+        //ดึงมาทั้งหมด
+        return Statustracking::where('NotirepairId')->get();
+    }
+    //use this
+    public static function updateStatus($statustrackingId, $status)
+    {
+        DB::table('statustracking')
+            ->where('statustrackingId', $statustrackingId)
+            ->update(['status' => $status->value]); // enum -> string
+    }
+    public static function getAllStatustracking()
+    {
+        return Statustracking::all();
     }
     //การรับของ
     // public static function getNotReceivedItems() {
@@ -50,12 +72,7 @@ class StatustrackingRepository
     //      return true;
 
     // }
-    public static function updateStatus($statustrackingId, $status)
-    {
-        DB::table('statustracking')
-            ->where('statustrackingId', $statustrackingId)
-            ->update(['status' => $status->value]); // enum -> string
-    }
+
 
     // public static function getNotSentToSupplierItems()
     // {
@@ -80,10 +97,7 @@ class StatustrackingRepository
     //     return true;
     // }
 
-    public static function getAllStatustracking()
-    {
-        return Statustracking::all();
-    }
+
 
 
     // ฟังก์ชันสำหรับสร้างรายการสถานะเริ่มต้น
@@ -104,3 +118,4 @@ class StatustrackingRepository
     //     return Statustracking::create($data);
     // }
 }
+// 

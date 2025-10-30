@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2025 at 11:58 AM
+-- Generation Time: Oct 30, 2025 at 11:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -646,12 +646,9 @@ CREATE TABLE `statustracking` (
 --
 
 INSERT INTO `statustracking` (`statustrackingId`, `NotirepairId`, `status`) VALUES
-(1, 0, 'ส่งSuplierเเล้ว'),
-(2, 0, 'ยังไม่ส่งSuplier'),
-(3, 0, 'ยังไม่ได้รับของ'),
-(4, 0, 'ส่งSuplierเเล้ว'),
-(5, 0, 'ยังไม่ได้รับของ'),
-(6, 0, 'ส่งSuplierเเล้ว');
+(7, 230, 'ได้รับของเเล้ว'),
+(9, 231, 'ได้รับของเเล้ว'),
+(10, 233, 'ยังไม่ได้รับของ');
 
 -- --------------------------------------------------------
 
@@ -817,7 +814,7 @@ ALTER TABLE `maststaffinfoit`
 -- AUTO_INCREMENT for table `statustracking`
 --
 ALTER TABLE `statustracking`
-  MODIFY `statustrackingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `statustrackingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tsr_memberchob`
@@ -866,6 +863,12 @@ ALTER TABLE `notirepair`
   ADD CONSTRAINT `notirepair_ibfk_1` FOREIGN KEY (`equipmentId`) REFERENCES `equipment` (`equipmentId`),
   ADD CONSTRAINT `notirepair_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `notirepair_ibfk_3` FOREIGN KEY (`MBranchInfo_Code`) REFERENCES `mastbranchinfo` (`MBranchInfo_Code`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `statustracking`
+--
+ALTER TABLE `statustracking`
+  ADD CONSTRAINT `statustracking_ibfk_1` FOREIGN KEY (`NotirepairId`) REFERENCES `notirepair` (`NotirepairId`);
 
 --
 -- Constraints for table `user`

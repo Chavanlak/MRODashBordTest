@@ -55,7 +55,7 @@
                         @endif --}}
 
 
-                        @if ($status->status === TrackingStatusEnum::NOTRECEIVED->value)
+                        {{-- @if ($status->status === TrackingStatusEnum::NOTRECEIVED->value)
                             <form action="{{ route('status.change', $status->statustrackingId) }}" method="POST"
                                 style="display:inline-block;">
                                 @csrf
@@ -79,7 +79,18 @@
                             <span class="text-success">ซ่อมงานเสร็จเรียบร้อยแล้ว</span>
                         @else
                             <span class="text-muted">{{ $status->status }}</span>
-                        @endif
+                        @endif --}}
+
+                        @if ($status->status === TrackingStatusEnum::NOTRECEIVED->value)
+                        <form action="{{ route('status.change', $status->statustrackingId)}}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-success btn-sm">กดรับ</button>
+                        </form>
+                    @else
+                        <span class="text-primary">รับของแล้ว ✅</span>
+                    @endif
+                    
+
 
 
 
